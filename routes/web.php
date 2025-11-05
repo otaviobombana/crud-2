@@ -9,6 +9,9 @@ use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\FornecedorController;
+
    
 Route::get('/', function () {
     return view('livewire.auth.login');
@@ -33,6 +36,10 @@ Route::middleware(['auth'])->group(function () {
 });
 
    Route::resource('categorias',CategoriaController::class)->middleware('auth');
-  
+  Route::resource('clientes', ClienteController::class);
+  Route::resource('fornecedores', App\Http\Controllers\FornecedorController::class);
+
+
+
 
 require __DIR__.'/auth.php';

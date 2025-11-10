@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
     <head>
         @include('partials.head')
@@ -37,7 +38,6 @@
                         {{ __('CLIENTES') }}
                     </flux:navlist.item>
 
-                    <!-- ✅ ADICIONADO FORNECEDORES (com ícone válido) -->
                     <flux:navlist.item 
                         icon="truck" 
                         :href="route('fornecedores.index')" 

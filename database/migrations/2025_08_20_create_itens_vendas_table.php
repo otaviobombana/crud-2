@@ -1,24 +1,30 @@
 <?php
 
-namespace App\Models;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
-class ItensVenda extends Model
+return new class extends Migration
 {
-    use HasFactory;
-
-    protected $table = 'itens_vendas';
-    protected $fillable = ['id_venda', 'id_produto', 'quantidade', 'preco_unitario'];
-
-    public function venda()
+    public function up(): void
     {
-        return $this->belongsTo(Venda::class, 'id_venda', 'id_venda');
+        Schema::create('itens_vendas', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('venda_id');
+            $table->unsignedBigInteger('produto_id');
+            $table->integer('quantidade');
+            $table->decimal('valor_unitario', 10, 2);
+            $table->decimal('subtotal', 10, 2);
+
+            $table->foreign('venda_id')->references('id')->on('vendas')->onDelete('cascade');
+            $table->foreign('produto_id')->references('id')->on('produtos')->onDelete('cascade');
+
+            $table->timestamps();
+        });
     }
 
-    public function produto()
+    public function down(): void
     {
-        return $this->belongsTo(Produto::class, 'id_produto', 'id_produto');
+        Schema::dropIfExists('itens_vendas');
     }
-}
+};

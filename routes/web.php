@@ -11,6 +11,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\FornecedorController;
+use App\Http\Controllers\VendaController;
+
+Route::resource('vendas', VendaController::class);
 
    
 Route::get('/', function () {
@@ -38,6 +41,7 @@ Route::middleware(['auth'])->group(function () {
    Route::resource('categorias',CategoriaController::class)->middleware('auth');
   Route::resource('clientes', ClienteController::class);
   Route::resource('fornecedores', App\Http\Controllers\FornecedorController::class);
+Route::resource('vendas', VendaController::class);
 
 
 

@@ -46,6 +46,15 @@
                         {{ __('FORNECEDORES') }}
                     </flux:navlist.item>
 
+                    <!-- ✅ NOVO ITEM DE MENU: VENDAS -->
+                    <flux:navlist.item 
+                        icon="banknotes" 
+                        :href="route('vendas.index')" 
+                        :current="request()->routeIs('vendas.*')" 
+                        wire:navigate>
+                        {{ __('VENDAS') }}
+                    </flux:navlist.item>
+
                 </flux:navlist.group>
             </flux:navlist>
 

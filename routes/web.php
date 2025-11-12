@@ -12,7 +12,8 @@ use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\FornecedorController;
 use App\Http\Controllers\VendaController;
-
+use App\Http\Controllers\ProdutoController;
+use App\Http\Controllers\ItemVendaController;
 Route::resource('vendas', VendaController::class);
 
    
@@ -42,8 +43,8 @@ Route::middleware(['auth'])->group(function () {
   Route::resource('clientes', ClienteController::class);
   Route::resource('fornecedores', App\Http\Controllers\FornecedorController::class);
 Route::resource('vendas', VendaController::class);
-
-
+Route::resource('produtos', ProdutoController::class);
+Route::resource('itensvendas', ItemVendaController::class);
 
 
 require __DIR__.'/auth.php';

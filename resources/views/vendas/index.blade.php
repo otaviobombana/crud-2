@@ -53,5 +53,20 @@
                 @endforelse
             </tbody>
         </table>
+        @if ($vendas->hasPages())
+    <div class="pagination mt-3 d-flex justify-content-between align-items-center">
+        <div class="pagination-info">
+            <small>
+                Mostrando {{ $vendas->firstItem() }}–{{ $vendas->lastItem() }}
+                de {{ $vendas->total() }} vendas
+            </small>
+        </div>
+
+        <div class="pagination-links">
+            {{ $vendas->links() }}
+        </div>
+    </div>
+@endif
+
     </div>
 </x-layouts.app>

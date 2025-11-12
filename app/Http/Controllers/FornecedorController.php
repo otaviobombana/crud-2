@@ -9,8 +9,12 @@ class FornecedorController extends Controller
 {
     public function index()
     {
-        $fornecedores = Fornecedor::all();
+        $fornecedores = Fornecedor::orderBy('nome')
+        ->paginate(2)              
+        ->withQueryString();
+        
         return view('fornecedores.index', compact('fornecedores'));
+
     }
 
     public function create()

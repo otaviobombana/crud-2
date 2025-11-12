@@ -48,6 +48,19 @@
                 @endforelse
             </tbody>
         </table>
+     @if ($clientes->hasPages())
+    <div class="pagination">
+        <div class="pagination-info">
+            {{ $clientes->firstItem() }}–{{ $clientes->lastItem() }}
+            de {{ $clientes->total() }}
+        </div>
+
+        <div class="pagination-links">
+            {{ $clientes->links() }}
+        </div>
+    </div>
+@endif
+
     </div>
 
     <script>

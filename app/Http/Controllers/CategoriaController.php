@@ -10,8 +10,14 @@ class CategoriaController extends Controller
     // Listar categorias e passar para view
     public function index()
     {
-        $categorias = Categoria::all();
+        // $categorias = Categoria::all();
+
+        $categorias = Categoria::orderBy('descricao')
+        ->paginate(2)              
+        ->withQueryString();
+
         return view('categorias.index', compact('categorias'));
+
     }
 
     // Formulário para criar nova categoria

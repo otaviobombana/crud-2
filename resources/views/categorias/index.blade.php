@@ -43,7 +43,18 @@
                     @endforeach
                 </tbody>
             </table>
+            @if ($categorias->hasPages())
+                <div class="pagination">
+                    <div class="pagination-info">
+                        {{ $categorias->firstItem() }}–{{ $categorias->lastItem() }}
+                        de {{ $categorias->total() }}
+                    </div>
 
+                    <div class="pagination-links">
+                        {{ $categorias->links() }}
+                    </div>
+                </div>
+            @endif
         
         @endif
     </div>

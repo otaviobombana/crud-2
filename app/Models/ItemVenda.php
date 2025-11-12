@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ItensVenda extends Model
+class ItemVenda extends Model
 {
     use HasFactory;
 
@@ -19,13 +19,13 @@ class ItensVenda extends Model
         'subtotal',
     ];
 
-    public function venda()
-    {
-        return $this->belongsTo(Venda::class);
-    }
-
     public function produto()
     {
-        return $this->belongsTo(Produto::class);
+        return $this->belongsTo(Produto::class, 'produto_id');
+    }
+
+    public function venda()
+    {
+        return $this->belongsTo(Venda::class, 'venda_id');
     }
 }

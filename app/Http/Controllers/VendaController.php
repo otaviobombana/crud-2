@@ -10,8 +10,12 @@ class VendaController extends Controller
 {
     public function index()
     {
-        $vendas = Venda::with('cliente')->get();
-        return view('vendas.index', compact('vendas'));
+        $vendas = Venda::with('cliente')
+        ->orderBy('id', 'desc')
+        ->paginate(2) 
+        ->withQueryString();
+
+    return view('vendas.index', compact('vendas'));
     }
 
     public function create()
